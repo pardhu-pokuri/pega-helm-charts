@@ -18,6 +18,25 @@ data:
 {{ .root.Files.Get "config/deploy/prconfig.xml" | indent 6 }}
 {{- end }}
 
+  # Pega deployment prweb's web.xml file
+  web.xml: |-
+{{- if $custom_config.webXML }}
+{{ $custom_config.webXML | indent 6 }}
+{{- end }}
+
+  # Pega deployment tomcat server.xml file
+  server.xml: |-
+{{- if $custom_config.serverXML }}
+{{ $custom_config.serverXML | indent 6 }}
+{{- end }}
+
+  # Pega deployment tomcat web.xml file
+  conf.web.xml: |-
+{{- if $custom_config.confWebXML }}
+{{ $custom_config.confWebXML | indent 6 }}
+{{- end }}
+
+
   # Pega deployment prlog4j2.xml file
   prlog4j2.xml: |-
 {{- if $custom_config.prlog4j2 }}
@@ -36,3 +55,4 @@ data:
 {{- end }}
 ---
 {{- end }}
+
